@@ -24,15 +24,15 @@ class AddNewCard extends Component {
   };
 
   onAddNewCard = () => {
-    const { questions , title , deck} = this.props.route.params.deck;
+    const { questions , title } = this.props.route.params.deck;
     const { dispatch , navigation } = this.props;
     // //console.log(deck)
     const newCard = {
       question: this.state.question,
       answer: this.state.answer,
     };
-    //console.log("new");
-    //console.log(newCard);
+    console.log("new");
+    console.log(newCard);
     //console.log(deck);
     const MyCard = {
       title: title,

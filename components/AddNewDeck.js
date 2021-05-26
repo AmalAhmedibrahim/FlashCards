@@ -30,7 +30,7 @@ class AddNewDeck extends Component {
       newDeckName: '',
     }))
 
-    navigation.navigate('Decks', {deck:{
+    navigation.navigate('Deck Page', {deck:{
       title: title,
       questions: [],
     }})

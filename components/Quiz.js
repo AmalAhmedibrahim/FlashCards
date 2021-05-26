@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, Button, TouchableOpacity, Platform } from 'react-native';
-// import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 import { connect } from 'react-redux'
+import { Text, View, Button } from 'react-native';
 
 
 class Quiz extends Component {
-  intialstate = {showCorrectAnswer: false,correctAns: 0,MyCounter: 0,}
+  state = {showCorrectAnswer: false,correctAns: 0,MyCounter: 0,}
   CorrectAns = () => this.setState((myState) => ({correctAns: myState.correctAns + 1,}))
   increaseMyCounter = () => {
     this.setState((myState) => ({
@@ -35,11 +34,11 @@ class Quiz extends Component {
     const { questions , title } = this.props.route.params.deck
     const { navigation } = this.props
     const QuestionsCount = questions.length
-    if (this.intialstate.MyCounter < QuestionsCount) {
+    if (this.state.MyCounter < QuestionsCount) {
       return(
         <View>
-            <Text>{this.intialstate.MyCounter + 1 } / {questions.length}</Text>
-            <Text>{this.intialstate.showCorrectAnswer? questions[this.intialstate.MyCounter].answer: questions[this.intialstate.MyCounter].question}</Text>
+            <Text>{this.state.MyCounter + 1 } / {questions.length}</Text>
+            <Text>{this.state.showCorrectAnswer? questions[this.state.MyCounter].answer: questions[this.state.MyCounter].question}</Text>
               <Button title="Show Answer" onPress={() => this.showCorrectAnswer()}/>
               <Button title="Correct" onPress={() => this.OnAnswer('correctAns')}/>
               <Button title="Incorrect Ans" onPress={() => this.OnAnswer('incorrectAns')}/>
@@ -49,7 +48,7 @@ class Quiz extends Component {
         <View>
         { questions.length == 0?<Text>no cards in the deck</Text>: 
         <View>
-              <Text>{this.intialstate.correctAns} / {this.intialstate.MyCounter} correct Answers</Text>
+              <Text>{this.state.correctAns} / {this.state.MyCounter} correct Answers</Text>
                 <Button onPress={() => this.restart()} title="start New quiz"/>
                 <Button onPress={() => navigation.goBack()} title="return to deck"/>
             </View>

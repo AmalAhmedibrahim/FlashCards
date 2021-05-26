@@ -1,4 +1,4 @@
-export const STORAGE_KEY = 'Card:data'
+export const STORAGE_KEY = 'fCard:data'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 let intialData = {

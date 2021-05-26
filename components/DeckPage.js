@@ -12,11 +12,11 @@ class DeckPage extends Component {
 
     const deck = decks.decks[title]
     const questionsCount = deck ? decks.decks[title].questions.length : 0;
-    // //console.log("hii")
-    // //console.log(decks.decks[title]);
+    console.log("hii")
+    console.log(decks.decks[title]);
     // //console.log(title);
  
-
+ 
 
     return(
       <TouchableOpacity> 

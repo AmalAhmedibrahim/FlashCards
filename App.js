@@ -13,30 +13,39 @@ import DeckPage from './components/DeckPage'
 import AddNewCard from './components/AddNewCard'
 import Quiz from './components/Quiz'
 
-const HomeStack = createStackNavigator();
+const StackNavigator = createStackNavigator();
+const StackNavigator2 = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function DeckStackScreen() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Decks" component={Home} />
-      <HomeStack.Screen name="Deck Page" component={DeckPage} />
-      <HomeStack.Screen name="Add Card" component={AddNewCard} />
-      <HomeStack.Screen name="Add Quiz" component={Quiz} />
-    </HomeStack.Navigator>
+
+    <StackNavigator.Navigator>
+
+
+      <StackNavigator.Screen name="Decks" component={Home} />
+      <StackNavigator.Screen name="Deck Page" component={DeckPage} />
+      <StackNavigator.Screen name="Add Card" component={AddNewCard} />
+      <StackNavigator.Screen name="Add Quiz" component={Quiz} />
+
+    
+    </StackNavigator.Navigator>
+
   );
 }
 
-const SettingsStack = createStackNavigator();
 
-function SettingsStackScreen() {
+function StackNavigator2Screen() {
   return (
-    <SettingsStack.Navigator>
-      <SettingsStack.Screen name="Settings" component={AddNewDeck} />
-    </SettingsStack.Navigator>
+
+    <StackNavigator2.Navigator>
+
+      <StackNavigator2.Screen name="Settings" component={AddNewDeck} />
+
+    </StackNavigator2.Navigator>
   );
 }
 
-const Tab = createBottomTabNavigator();
 
 export default class App extends Component {
 
@@ -46,11 +55,15 @@ export default class App extends Component {
   render(){
     return (
       <Provider store={createStore(reducer)}>
+
         <NavigationContainer>
           <Tab.Navigator>
+
             <Tab.Screen name="Decks" component={DeckStackScreen} />
-            <Tab.Screen name="Add Deck" component={SettingsStackScreen} />
+            <Tab.Screen name="Add Deck" component={StackNavigator2Screen} />
+            
           </Tab.Navigator>
+
         </NavigationContainer>
       </Provider>
     )
