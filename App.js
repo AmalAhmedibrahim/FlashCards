@@ -12,6 +12,8 @@ import AddNewDeck from './components/AddNewDeck'
 import DeckPage from './components/DeckPage'
 import AddNewCard from './components/AddNewCard'
 import Quiz from './components/Quiz'
+import { setLocalNotification } from './utils/helpers'
+
 
 const StackNavigator = createStackNavigator();
 const StackNavigator2 = createStackNavigator();
@@ -48,9 +50,8 @@ function StackNavigator2Screen() {
 
 
 export default class App extends Component {
-
   componentDidMount() {
-    // setLocalNotification()
+    setLocalNotification()
   }
   render(){
     return (

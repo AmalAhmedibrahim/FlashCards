@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Text, View, Button } from 'react-native';
-
+import {  setLocalNotification , clearLocalNotification} from '../utils/helpers';
 
 class Quiz extends Component {
   state = {showCorrectAnswer: false,correctAns: 0,MyCounter: 0,}

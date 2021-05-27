@@ -1,5 +1,8 @@
-export const STORAGE_KEY = 'fCard:data'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
+export const STORAGE_KEY = 'fCard:data';
+const NOTIFI_KEY = 'Noticards:notifications';
 
 let intialData = {
   Angular: {
@@ -47,4 +50,45 @@ export async function clearAllData() {
 return await AsyncStorage.getAllKeys()
       .then(keys => AsyncStorage.multiRemove(keys))
       .then(() => console.log("done"));
+}
+function createNotification() {
+
+}
+
+export function clearLocalNotification () {
+  return AsyncStorage.removeItem(NOTIFI_KEY).then(Notifications.cancelAllScheduledNotificationsAsync())
+}
+
+export function setLocalNotification () {
+  AsyncStorage.getItem(NOTIFI_KEY)
+    .then(JSON.parse).then((data) => {
+      
+      if (data === null) {
+        Permissions.askAsync(Permissions.NOTIFICATIONS) .then(({ status }) => {
+
+            if (status === 'granted') {
+              Notifications.cancelAllScheduledNotificationsAsync();
+
+              let tomorrow = new Date();
+              tomorrow.setDate(tomorrow.getDate() + 1);
+              tomorrow.setHours(20);
+              tomorrow.setMinutes(0);
+
+              Notifications.scheduleLocalNotificationAsync(
+
+                createNotification(),
+                {
+                  time: tomorrow,
+                  repeat: 'day',
+                }
+              );
+
+              AsyncStorage.setItem(NOTIFI_KEY, JSON.stringify(true))
+              
+            } else {
+              console.log("not granted")
+            }
+          })
+      }
+    })
 }
