@@ -15,7 +15,7 @@ The app allows users to create different categories of flashcards called "decks"
 5- See ur score.
 
 
-## Instalation Instructions
+## Installation Instructions
 
 Clone or download the project
 Run npm install in the project root directory to install dependencies
