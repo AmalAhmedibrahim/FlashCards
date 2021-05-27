@@ -6,7 +6,7 @@ UdaciCards project, build a mobile application  that allows users to study colle
 The app allows users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks.
 
 
-# Features 
+## Features 
 
 1- View all decks.
 2- Create new decks.
@@ -15,7 +15,7 @@ The app allows users to create different categories of flashcards called "decks"
 5- See ur score.
 
 
-# Instalation Instructions
+## Instalation Instructions
 
 Clone or download the project
 Run npm install in the project root directory to install dependencies
